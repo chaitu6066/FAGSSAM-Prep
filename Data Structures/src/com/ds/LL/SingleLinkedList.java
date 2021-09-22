@@ -5,10 +5,12 @@ import java.util.HashSet;
 public class SingleLinkedList {
     class SLLNode {
         int data;
+
         SLLNode next;
 
         SLLNode(int data) {
             this.data = data;
+            next = null;
         }
     }
 
@@ -26,6 +28,12 @@ public class SingleLinkedList {
             cHead = cHead.next;
         }
         cHead.next = new SLLNode(data);
+    }
+
+    public void appendToHead(int data) {
+        SLLNode temp = new SLLNode(data);
+        temp.next = head;
+        head = temp;
     }
 
     public boolean deleteNode(int data) {
@@ -85,9 +93,16 @@ public class SingleLinkedList {
         sll.appendAtTail(10);
         sll.print();
         sll.printKthlastNodeIntheList(sll, 2);
+        sll.reverseASLL(sll).print();
+
+        sll.addTwoLists();
     }
 
-// ********************** Problems *********************
+/* ********************* Problems *********************/
+
+
+
+/* ******************* Remove Duplicates */
 
     SingleLinkedList removeDuplicatesWithExtraSpace(SingleLinkedList list) {
         if (list == null || list.head == null)
@@ -130,6 +145,9 @@ public class SingleLinkedList {
         return list;
     }
 
+
+/* **************** Print the Kth node from last ******************/
+
     void printKthlastNodeIntheList(SingleLinkedList list, int k) {
         SLLNode fast = list.head, slow = list.head;
 
@@ -148,5 +166,81 @@ public class SingleLinkedList {
         assert slow != null;
         System.out.println(slow.data);
     }
+
+/* ************* Reverse a single linked List *****************/
+
+    SingleLinkedList reverseASLL(SingleLinkedList list) {
+
+        SLLNode cHead = list.head, prev = null;
+        while (cHead != null){
+            SLLNode temp = cHead.next;
+            cHead.next = prev;
+            prev = cHead;
+            cHead = temp;
+        }
+        list.head = prev;
+        return list;
+    }
+
+
+/* ************************  2 numbers represented in the form of linked list. Each node contains
+ * single digit. Return the result in the form of new list.
+ ************************/
+
+    void addTwoLists() {
+        SLLNode h1 = new SLLNode(4);
+        h1.next = new SLLNode(2);
+        h1.next.next = new SLLNode(3);
+        h1.next.next.next = new SLLNode(5);
+
+        SLLNode h2 = new SLLNode(4);
+        h2.next = new SLLNode(2);
+        h2.next.next = new SLLNode(3);
+        h2.next.next.next = new SLLNode(5);
+
+        SLLNode result = sumOfTwoLLRecursive(h1, h2);
+        while (result != null) {
+            System.out.print("\t" + result.data);
+            result = result.next;
+        }
+    }
+
+    SLLNode sumOfTwoLLRecursive(SLLNode l1, SLLNode l2) {
+        return sumOfTwoLLHelper(l1, l2, 0);
+    }
+
+    SLLNode sumOfTwoLLHelper(SLLNode list1, SLLNode list2, int carry) {
+        if ( list1 == null && list2 == null && carry == 0) {
+            return null;
+        }
+
+        int sum = carry;
+        if (list1 != null) {
+            sum += list1.data;
+        }
+        if (list2 != null){
+            sum += list2.data;
+        }
+
+        SLLNode result = new SLLNode(sum%10);
+        if (list1 != null || list2 != null) {
+            result.next = sumOfTwoLLHelper(list1.next, list2.next, sum / 10);
+        }
+        return result;
+    }
+
+/* ********** Find out that the Linkedlist is null terminated or has a loop ************/
+
+    boolean hasLoop(SLLNode head) {
+        SLLNode slow = head, fast = head;
+
+        while ( slow != fast || fast == null || fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        return slow == fast;
+    }
+
 
 }
