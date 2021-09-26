@@ -1,30 +1,19 @@
-package com.ds.LL;
+package com.ds.LL.practice;
 
-public class PrintSingleLinkedList {
-    /*
-     * This class is to print the list with numbers with specified length
-     *
-     * Input - 4
-     * Output - 1 -> 2 -> 3 -> 4*/
+import java.util.ArrayList;
+import java.util.HashSet;
 
-    static class SLLNode {
+public class SingleLinkedListUtils {
+    public static class SLLNode {
         int data;
         SLLNode next;
-        SLLNode(int data){
+
+        SLLNode(int data) {
             this.data = data;
-            next = null;
-        }
-        SLLNode getNext() {
-            return next; //TODO return shawllow copy Look into this topic and provide a best alternate value
         }
     }
 
-    public static void main(String[] args) {
-        int n = Integer.parseInt(args[0]);
-        print(createTillValue(n));
-    }
-
-    public static SLLNode createTillValue(int n) {
+    public SLLNode createTillValue(int n) {
         SLLNode head = null;
 
         if(n == 0) {
@@ -42,7 +31,7 @@ public class PrintSingleLinkedList {
         return head;
     }
 
-    public static void print(SLLNode head) {
+    public String print(SLLNode head) {
         StringBuilder value = new StringBuilder();
         String separator = "->";
 
@@ -52,6 +41,7 @@ public class PrintSingleLinkedList {
             node = node.next;
             value.append(separator);value.append(node.data);
         }
-        System.out.println(value.toString());
+        return value.toString();
     }
+
 }

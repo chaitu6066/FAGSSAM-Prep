@@ -1,5 +1,6 @@
 package com.ds.LL;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 public class SingleLinkedList {
@@ -62,6 +63,9 @@ public class SingleLinkedList {
     // If you are not able to progress, will add om 26th Sept
 
     public static void main(String[] args) {
+
+        ArrayList<Integer> add = new ArrayList<>();
+
         SingleLinkedList sll = new SingleLinkedList();
         sll.appendAtTail(10);
         sll.appendAtTail(20);
