@@ -1,5 +1,7 @@
 package com.ds.LL;
 
+import com.ds.LL.practice.SingleLinkedListUtils;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -12,6 +14,18 @@ public class SingleLinkedList {
         SLLNode(int data) {
             this.data = data;
             next = null;
+        }
+    }
+
+    class DLLNode {
+        int data;
+        DLLNode next;
+        DLLNode prev;
+
+        DLLNode(int data) {
+            this.data = data;
+            next = null;
+            prev = null;
         }
     }
 
@@ -70,6 +84,27 @@ public class SingleLinkedList {
 //TODO: Implement following functions 1. insertAtHead() and do the same for double linked list
     // If you are not able to progress, will add om 26th Sept
 
+    public DLLNode insertAtHead(DLLNode head, int data){
+        DLLNode newNode = new DLLNode(data);
+        if(head == null){
+            return  newNode;
+        }
+        newNode.next = head;
+        head.prev = newNode;
+        head = newNode;
+        return head;
+    }
+
+    void printForDLL(DLLNode node) {
+        DLLNode cHead = node;
+        System.out.println("List Elements: ");
+        while (cHead != null) {
+            System.out.print(cHead.data + "\t");
+            cHead = cHead.next;
+        }
+        System.out.println();
+    }
+
     public static void main(String[] args) {
 
         ArrayList<Integer> add = new ArrayList<>();
@@ -95,6 +130,10 @@ public class SingleLinkedList {
         sll.addTwoLists();
         sll.loopCheckHelper();
         sll.getIntersectionNodeHelper();
+
+        DLLNode node = sll.insertAtHead(null, 1);
+        sll.printForDLL(sll.insertAtHead(node, 2));
+
     }
 
 /* ********************* Problems *********************/
@@ -299,7 +338,15 @@ public class SingleLinkedList {
 slow pointer and fast pointer answer
  */
     //TODO: Implement Fast and Slow Pointer: Ref: Above method hasLoop()
-
+public static SLLNode getMiddleElement(SLLNode head){
+    SLLNode runner1 = head;
+    SLLNode runner2 = head;
+    while(runner2 != null && runner2.next != null && runner2.next.next !=null){
+        runner1 = runner1.next;
+        runner2 = runner2.next.next;
+    }
+    return runner1;
+}
 
 
     /* ****** Find out whether 2 linked list intersect or not. If yes, return the starting point
