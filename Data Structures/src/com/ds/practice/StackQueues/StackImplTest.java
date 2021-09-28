@@ -1,9 +1,7 @@
-package com.ds.LL.practice;
+package com.ds.practice.StackQueues;
 
+import com.ds.practice.utils.SingleLinkedListUtils;
 import org.junit.Test;
-import com.ds.LL.practice.SingleLinkedListUtils.SLLNode;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class StackImplTest {
 

@@ -1,5 +1,6 @@
-package com.ds.LL.practice;
+package com.ds.practice.LL;
 
+import com.ds.practice.utils.SingleLinkedListUtils;
 import org.junit.Assert;
 import org.junit.Test;
 

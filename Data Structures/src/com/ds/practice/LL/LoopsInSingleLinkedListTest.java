@@ -1,8 +1,8 @@
-package com.ds.LL.practice;
+package com.ds.practice.LL;
 
 import org.junit.Assert;
 import org.junit.Test;
-import com.ds.LL.practice.SingleLinkedListUtils.SLLNode;
+import com.ds.practice.utils.SingleLinkedListUtils.SLLNode;
 
 public class LoopsInSingleLinkedListTest {
 

@@ -1,6 +1,4 @@
-package com.ds.LL.practice;
-
-import com.ds.LL.practice.SingleLinkedListUtils.SLLNode;
+package com.ds.practice.StackQueues;
 
 public class QueueImpl {
 

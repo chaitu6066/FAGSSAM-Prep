@@ -1,8 +1,6 @@
-package com.ds.LL.practice;
+package com.ds.practice.StackQueues;
 
 import org.junit.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class QueueImplTest {
 

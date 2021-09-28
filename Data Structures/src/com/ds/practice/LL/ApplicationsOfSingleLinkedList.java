@@ -1,6 +1,6 @@
-package com.ds.LL.practice;
+package com.ds.practice.LL;
 
-import com.ds.LL.practice.SingleLinkedListUtils.SLLNode;
+import com.ds.practice.utils.SingleLinkedListUtils.SLLNode;
 
 public class ApplicationsOfSingleLinkedList {
     /*
@@ -40,8 +40,29 @@ public class ApplicationsOfSingleLinkedList {
      *      i.Take 4 pointers. 1-head of first sll,2-head of second sll,3-head.next of f-sll,4-head.next of s-sll.
      *      ii.Check if 1<2 then
      *
-     *
+     *5.Find the kth last element from the singly linked list.
+     *      Runner Technique -
+     *          Start a pointer from head and iterate over list k times.
+     *          Now create second pointer from head and iterate over list until first pointer reaches last element.
      */
+
+    public SLLNode findKthLastElement(SLLNode head, int k){
+        SLLNode node = head;
+        int i =0;
+        while(i<k){
+            if (node == null){
+                return null;
+            }
+            node = node.next;
+            i++;
+        }
+        SLLNode temp = head;
+        while (node != null){
+            temp = temp.next;
+            node = node.next;
+        }
+        return temp;
+    }
 
     public SLLNode printListAsCircles(SLLNode head){
         SLLNode node = head;
