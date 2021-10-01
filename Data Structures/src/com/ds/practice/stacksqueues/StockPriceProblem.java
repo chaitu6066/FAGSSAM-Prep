@@ -15,7 +15,9 @@ public class StockPriceProblem {
                 if (input[i] <= input[stack.peek()]) {
                     result[i] = 1;
                 } else {
-                    stack.pop(); // popping the element if we found the larger value than the peek o the stack
+                    while(input[i] >= input[stack.peek()]) {
+                        stack.pop(); // popping the element if we found the larger value than the peek of the stack
+                    }
                     result[i] = i - stack.peek();
                 }
                 stack.push(i);
