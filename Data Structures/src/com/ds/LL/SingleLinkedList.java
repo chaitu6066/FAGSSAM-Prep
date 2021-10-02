@@ -1,6 +1,7 @@
 package com.ds.LL;
 
 import java.util.HashSet;
+import java.util.Stack;
 
 public class SingleLinkedList {
     class SLLNode {
@@ -86,11 +87,14 @@ public class SingleLinkedList {
         sll.appendAtTail(1000);
         sll.appendAtTail(10);
 
+
         sll.printKthlastNodeIntheList(sll, 2);
         sll.reverseASLL(sll).print();
         sll.addTwoLists();
         sll.loopCheckHelper();
         sll.getIntersectionNodeHelper();
+
+        sll.isPalindromeUtil();
     }
 
 /* ********************* Problems *********************/
@@ -388,6 +392,50 @@ slow pointer and fast pointer answer
        }
        printLLFromTailRecur(list.next);
        System.out.println(list.data);
+    }
+
+/* ********* Given Linked List is Palindrome or not **********************/
+
+//TODO: Implement reversing the seconf part of linked list, use half stack using fast and slow
+// pointers.
+
+    void isPalindromeUtil() {
+        SLLNode s1 = new SLLNode(1);
+        SLLNode s2 = new SLLNode(2);
+        s1.next = s2;
+        SLLNode s3 = new SLLNode(3);
+        s2.next = s3;
+        SLLNode s4 = new SLLNode(4);
+        s3.next = s4;
+        SLLNode s5 = new SLLNode(5);
+        s4.next = s5;
+        SLLNode s6 = new SLLNode(4);
+        s5.next = s6;
+        SLLNode s7 = new SLLNode(3);
+        s6.next = s7;
+        SLLNode s8 = new SLLNode(2);
+        s7.next = s8;
+        SLLNode s9 = new SLLNode(1);
+        s8.next = s9;
+
+        System.out.println(isPalindrome(s1));
+    }
+
+    boolean isPalindrome(SLLNode head) {
+        SLLNode tHead = head;
+
+        Stack<Integer> stack = new Stack<>();
+        while (tHead != null) {
+            stack.push(tHead.data);
+            tHead = tHead.next;
+        }
+        while (head != null) {
+            if (stack.pop() != head.data) {
+                return false;
+            }
+            head = head.next;
+        }
+        return true;
     }
 
 }
