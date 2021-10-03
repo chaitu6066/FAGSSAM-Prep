@@ -9,6 +9,24 @@ public class LoopsInSingleLinkedListTest {
     LoopsInSingleLinkedList findLoopSingleLinkedList = new LoopsInSingleLinkedList();
 
     @Test
+    public void intersectionTest(){
+        SLLNode one = new SLLNode(1);
+        SLLNode two = new SLLNode(2);one.next = two;
+        SLLNode three = new SLLNode(3);two.next = three;
+        SLLNode four = new SLLNode(4);three.next = four;
+        SLLNode nin = new SLLNode(9);
+        SLLNode tn = new SLLNode(10);nin.next = tn;
+        SLLNode el = new SLLNode(11);tn.next = el;
+        SLLNode tw = new SLLNode(12);el.next = tw;
+        SLLNode five = new SLLNode(5);tw.next = five;four.next = five;
+        SLLNode six = new SLLNode(6);five.next = six;
+        SLLNode seven = new SLLNode(7);six.next = seven;
+        SLLNode eight = new SLLNode(8);seven.next = eight;
+
+        System.out.println(findLoopSingleLinkedList.getIntersectionNode(one,nin).data);
+    }
+
+    @Test
     public void test() {
         Assert.assertTrue(findLoopSingleLinkedList.isLoop(testData1()));
         Assert.assertTrue(findLoopSingleLinkedList.isLoop(testData2()));

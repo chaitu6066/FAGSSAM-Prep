@@ -27,8 +27,4 @@ public class CRUDSingleLinkedList {
         return null;
     }
 
-    public SLLNode delete(SLLNode node){
-        //TODO
-        return null;
-    }
 }

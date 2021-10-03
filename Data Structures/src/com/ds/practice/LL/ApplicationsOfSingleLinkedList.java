@@ -44,6 +44,11 @@ public class ApplicationsOfSingleLinkedList {
      *      Runner Technique -
      *          Start a pointer from head and iterate over list k times.
      *          Now create second pointer from head and iterate over list until first pointer reaches last element.
+     *
+     * 6. Add two numbers
+     *
+     *
+     *
      */
 
     public SLLNode findKthLastElement(SLLNode head, int k){

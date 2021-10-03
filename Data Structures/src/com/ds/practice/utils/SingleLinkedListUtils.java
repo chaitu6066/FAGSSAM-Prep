@@ -1,9 +1,11 @@
 package com.ds.practice.utils;
 
 public class SingleLinkedListUtils {
+
     public static class SLLNode {
         public int data;
         public SLLNode next;
+
         public SLLNode(int data) {
             this.data = data;
         }
@@ -23,19 +25,39 @@ public class SingleLinkedListUtils {
         public void setNext(SLLNode next) {
             this.next = next;
         }
+
+        //Node can be any node from the list, And you only have write access to it.
+        public void delete(SLLNode node) {
+            SLLNode next = node.next;
+            if (next != null) {
+                node.data = next.data;
+                node.next = next.next;
+            } else {
+                node = null;
+            }
+        }
+    }
+
+    public int findLength(SLLNode node) {
+        int length = 0;
+        while (node != null) {
+            length++;
+            node = node.next;
+        }
+        return length;
     }
 
     public SLLNode createTillValue(int n) {
         SLLNode head = null;
 
-        if(n == 0) {
+        if (n == 0) {
             return null;
         }
-        if(n >= 1) {
+        if (n >= 1) {
             head = new SLLNode(1);
         }
         SLLNode temp = head;
-        for(int i=2; i<n+1; i++) {
+        for (int i = 2; i < n + 1; i++) {
             SLLNode node = new SLLNode(i);
             temp.next = node;
             temp = node;
@@ -49,22 +71,23 @@ public class SingleLinkedListUtils {
 
         value.append(head.data);
         SLLNode node = head;
-        while(node.next != null) {
+        while (node.next != null) {
             node = node.next;
-            value.append(separator);value.append(node.data);
+            value.append(separator);
+            value.append(node.data);
         }
         return value.toString();
     }
 
-    public SLLNode removeDuplicates(SLLNode head){
+    public SLLNode removeDuplicates(SLLNode head) {
         SLLNode node = head;
-        while(node != null){
+        while (node != null) {
             SLLNode next = node.next;
-            while (next !=null){
-                if(node.data == next.next.data){
+            while (next != null) {
+                if (node.data == next.next.data) {
                     next = next.next.next;
                 }
-                if(next != null ){
+                if (next != null) {
                     next = next.next;
                 }
             }
